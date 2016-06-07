@@ -23,11 +23,12 @@ defmodule HljShareUrl do
   end
 
   defp inject_query nil, setting do
-    inject_query %{}, setting
+    inject_query "", setting
   end
 
   defp inject_query query, setting do
     query
+    |> URI.decode_query()
     |> Map.merge(setting[:title]      && %{hlj_title:     setting[:title]} || %{})
     |> Map.merge(setting[:sub_title]  && %{hlj_content:   setting[:sub_title]} || %{})
     |> Map.merge(setting[:icon]       && %{hlj_icon_url:  setting[:icon]} || %{})
