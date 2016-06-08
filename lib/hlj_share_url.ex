@@ -1,5 +1,18 @@
 defmodule HljShareUrl do
 
+  def main(args) do
+    args |> parse_args |> process
+  end
+
+  def parse_args(args) do
+    {options, [url], _} = OptionParser.parse(args)
+    {:ok, url, options}
+  end
+
+  def process({:ok, url, options}) do
+    IO.inspect from(url, options)
+  end
+
   def from(url, setting) do
     URI.parse(url)
     |> inject_uri(setting)
@@ -7,9 +20,13 @@ defmodule HljShareUrl do
 
   defp inject_uri uri, setting do
     query = inject_query uri.query, setting
-    parts = [uri.scheme, "://"]
+    parts = [];
 
-    parts = parts ++ [uri.authority, uri.path]
+    if uri.scheme do
+      parts = parts ++ [uri.scheme, "://", uri.authority]
+    end
+
+    parts = parts ++ [uri.path]
 
     unless query == %{} do
       parts = parts ++ ["?", URI.encode_query(query)]

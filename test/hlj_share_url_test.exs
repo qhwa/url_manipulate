@@ -63,4 +63,10 @@ defmodule HljShareUrlTest do
 
     assert HljShareUrl.from(input, %{ icon: icon, title: title, sub_title: sub_title }) == expected
   end
+
+  test "only path" do
+    input = "/path"
+    title = "title"
+    assert HljShareUrl.from(input, %{ title: title }) == "/path?hlj_title=title"
+  end
 end
