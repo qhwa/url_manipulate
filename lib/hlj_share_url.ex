@@ -30,7 +30,7 @@ defmodule HljShareUrl do
   ## Examples
   
     iex> HljShareUrl.from("http://example.com/test.html", title: "Sharing")
-    "http://example.com/test.html?title=Sharing"
+    "http://example.com/test.html?hlj_title=Sharing"
 
   """
   def from(url, setting) do
