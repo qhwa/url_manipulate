@@ -1,20 +1,8 @@
 defmodule HljShareUrl do
+
   @moduledoc """
     Provide a function (HljShareUrl.form/2) to generate a url holding the sharing configuration data.
   """
-
-  def main(args) do
-    args |> parse_args |> process
-  end
-
-  def parse_args(args) do
-    {options, [url], _} = OptionParser.parse(args)
-    {:ok, url, options}
-  end
-
-  def process({:ok, url, options}) do
-    IO.inspect from(url, options)
-  end
 
   @doc """
   Generate a url with sharing config.

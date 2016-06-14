@@ -7,7 +7,7 @@ defmodule HljShareUrl.Mixfile do
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     escript: [main_module: HljShareUrl],
+     escript: [main_module: HljShareUrl.CLI],
      deps: deps]
   end
 
