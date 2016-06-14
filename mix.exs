@@ -28,6 +28,9 @@ defmodule HljShareUrl.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:yuri, "~> 1.0.0"}]
+    [
+      {:ex_doc, "~> 0.11.5"},
+      {:earmark, ">= 0.0.0"}
+    ]
   end
 end
